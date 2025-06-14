@@ -1,119 +1,108 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Select Class</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Class & Poem</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
       text-align: center;
-      margin-top: 100px;
+      padding: 20px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #f9f9f9;
     }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
     select, button {
-      font-size: 16px;
-      padding: 10px;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
-  </style>
-</head>
-<body>
 
-  <h1>Select Your Class</h1>
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  <select id="classDropdown">
-    <option value="">-- Choose a Class --</option>
-    <option value="class1.html">Class 1</option>
-    <option value="class2.html">Class 2</option>
-    <option value="class3.html">Class 3</option>
-    <option value="class4.html">Class 4</option>
-    <option value="class5.html">Class 5</option>
-    <option value="class6.html">Class 6</option>
-    <option value="class7.html">Class 7</option>
-    <option value="class8.html">Class 8</option>
-    <option value="class9.html">Class 9</option>
-    <option value="class10.html">Class 10</option>
-  </select>
+    button:hover {
+      background-color: #0056b3;
+    }
 
-  <button onclick="goToClass()">Go</button>
+    @media (min-width: 768px) {
+      .container {
+        max-width: 600px;
+        padding: 30px;
+      }
 
-  <script>
-    function goToClass() {
-      var selected = document.getElementById("classDropdown").value;
-      if (selected) {
-        window.location.href = selected;
-      } else {
-        alert("Please select a class!");
+      select, button {
+        font-size: 1.1rem;
       }
     }
-  </script>
-
-</body>
-</html>
- -->
-
-
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Select Class & Subject</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-    }
-    select, button {
-      font-size: 16px;
-      padding: 10px;
-      margin: 10px;
-    }
   </style>
 </head>
 <body>
 
-  <h1>Select Your Class, Subject & Poem</h1>
+  <div class="container">
+    <h2>Select Your Class, Subject & Poem</h2>
+    <select id="class">
+      <option>-- Choose Class --</option>
+      <option value="class1">Class 1</option>
+      <option value="class2">Class 2</option>
+      <!-- Add more classes as needed -->
+    </select>
 
-  <!-- Class Dropdown -->
-  <select id="classDropdown">
-    <option value="">-- Choose Class --</option>
-    <option value="class1">Class 1</option>
-    <option value="class2">Class 2</option>
-    <option value="class3">Class 3</option>
-    <!-- Add more classes -->
-  </select>
+    <select id="subject">
+      <option>-- Choose Subject --</option>
+      <option value="english">English</option>
+      <option value="kannada">Kannada</option>
+      <!-- Add more subjects as needed -->
+    </select>
 
-  <!-- Subject Dropdown -->
-  <select id="subjectDropdown">
-    <option value="">-- Choose Subject --</option>
-    <option value="kannada">Kannada</option>
-    <option value="english">English</option>
-    <option value="hindi">Hindi</option>
-  </select>
+    <select id="poem">
+      <option>-- Choose Poem --</option>
+      <option value="poem1">Poem 1</option>
+      <option value="poem2">Poem 2</option>
+      <!-- Add more poems as needed -->
+    </select>
 
-  <!-- Subject Poem -->
-  <select id="poemDropdown">
-    <option value="">-- Choose Poem --</option>
-    <option value="poem1">Poem 1</option>
-    <option value="poem2">Poem 2</option>
-    <option value="poem3">Poem 3</option>
-  </select>
-
-  <br>
-  <button onclick="goToPage()">Go</button>
+    <button onclick="goToPoem()">Go</button>
+  </div>
 
   <script>
-    function goToPage() {
-      const selectedClass = document.getElementById("classDropdown").value;
-      const selectedSubject = document.getElementById("subjectDropdown").value;
-      const selectedPoem = document.getElementById("poemDropdown").value;
+    function goToPoem() {
+      const cls = document.getElementById("class").value;
+      const subject = document.getElementById("subject").value;
+      const poem = document.getElementById("poem").value;
 
-      if (selectedClass && selectedSubject && selectedPoem) {
-        // Create the page path, e.g., class1_kannada.html
-        const page = `${selectedClass}_${selectedSubject}_${selectedPoem}.html`;
-        window.location.href = page;
+      if (cls && subject && poem && cls !== "-- Choose Class --") {
+        // Example logic: Navigate to a custom URL (replace with yours)
+        const url = `${cls}_${subject}_${poem}.html`;
+        window.location.href = url;
       } else {
-        alert("Please select class, subject and poem!");
+        alert("Please select all fields.");
       }
     }
   </script>
