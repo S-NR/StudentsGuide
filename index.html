@@ -1,90 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Students Guide</title>
+  <style>
     body {
-      background-color: #000000; /* Light pastel blue */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .about {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .about h2 {
+      margin-bottom: 10px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (min-width: 768px) {
+      select, button {
+        font-size: 1.1rem;
+      }
     }
   </style>
-      <title>Students Guide</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
 </head>
 <body>
-    
-  <header>
-    <h1>Students Guide</h1>
-  </header>
 
-<!--   <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav> -->
+  <div class="header">
+    Students Guide
+  </div>
 
-  <main>
-    <section>
+  <div class="content">
+    <div class="about">
       <h2>About Page</h2>
       <p>Best Guide for students from Class 1 to 10</p>
-    </section>
+    </div>
 
-    <!-- Video Section -->
-<!--     <section>
-      <h2>My Introduction Video</h2>
-      <video width="640" height="360" controls>
-        <source src="demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </section> -->
-  </main>
+    <h3>Select Your Class, Subject & Poem</h3>
+    <select id="class">
+      <option>-- Choose Class --</option>
+      <option value="class1">Class 1</option>
+      <option value="class2">Class 2</option>
+    </select>
 
-  <!--
-<iframe width="560" height="315" 
-    src="https://www.youtube.com/embed/fJC-Rgj7wvc" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-</iframe>
--->
+    <select id="subject">
+      <option>-- Choose Subject --</option>
+      <option value="english">English</option>
+      <option value="kannada">Kannada</option>
+    </select>
 
-  <!-- Button to navigate to another page -->
-<section>
-  <button onclick="location.href='classlist.html'">Go to Class list</button>
-  <button onclick="location.href='Poems.html'">Go to Poems</button>
-</section>
-
-<!-- Button to play a video in new tab -->
-<section>
-  <button onclick="window.open('https://www.youtube.com/watch?v=fJC-Rgj7wvc', '_blank')">
-    Watch Video
-  </button>
-</section>
-
-  <!-- Button to show embedded YouTube video -->
-<section>
-  <button onclick="document.getElementById('videoFrame').style.display='block'">
-    Play Embedded Video
-  </button>
-  <div id="videoFrame" style="display:none; margin-top:20px;">
-    <!-- Video Section -->
-    <section>
-      <h2>My Introduction Video</h2>
-      <video width="640" height="360" controls>
-        <source src="demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </section>
-  </div>
-</section>
-  
-  <footer>
-    <p>&copy; 2025 My Website</p>
-  </footer>
-
-</body>
-</html>
-
+    <select id="poem">
+      <option>-- Choose
+        
