@@ -2,43 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Select a Poem</title>
+  <title>Poem 1</title>
   <style>
     body {
-      text-align: center;
+      display: flex;
+      margin: 0;
       font-family: sans-serif;
-      margin-top: 100px;
     }
-    select, button {
-      padding: 10px;
-      font-size: 16px;
+    .left, .right {
+      flex: 1;
+      padding: 20px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+    .left {
+      background-color: #f0f0f0;
+    }
+    .right {
+      background-color: #e8f7ff;
+    }
+    iframe, embed {
+      width: 100%;
+      height: 90%;
+      border: none;
     }
   </style>
 </head>
 <body>
 
-  <h1>Select a Poem</h1>
+  <!-- Left: PDF -->
+  <div class="left">
+    <h2>Poem 1 (Text)</h2>
+    <embed src="Class1_Poem1.pdf" type="application/pdf">
+  </div>
 
-  <select id="poemDropdown">
-    <option value="">-- Choose a Poem --</option>
-    <option value="poem1.html">Poem 1</option>
-    <option value="poem2.html">Poem 2</option>
-    <option value="poem3.html">Poem 3</option>
-  </select>
-
-  <button onclick="goToPoem()">Go</button>
-
-  <script>
-    function goToPoem() {
-      const page = document.getElementById("poemDropdown").value;
-      if (page) {
-        window.location.href = page;
-      } else {
-        alert("Please select a poem.");
-      }
-    }
-  </script>
+  <!-- Right: Video -->
+  <div class="right">
+    <h2>Poem 1 (Video)</h2>
+    <iframe 
+      src="https://www.youtube.com/embed/fJC-Rgj7wvc" 
+      title="Poem 1 Video" 
+      allowfullscreen>
+    </iframe>
+  </div>
 
 </body>
 </html>
-
