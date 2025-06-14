@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -42,6 +42,69 @@
         window.location.href = selected;
       } else {
         alert("Please select a class!");
+      }
+    }
+  </script>
+
+</body>
+</html>
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Class & Subject</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    select, button {
+      font-size: 16px;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select Your Class and Subject</h1>
+
+  <!-- Class Dropdown -->
+  <select id="classDropdown">
+    <option value="">-- Choose Class --</option>
+    <option value="class1">Class 1</option>
+    <option value="class2">Class 2</option>
+    <option value="class3">Class 3</option>
+    <!-- Add more classes -->
+  </select>
+
+  <!-- Subject Dropdown -->
+  <select id="subjectDropdown">
+    <option value="">-- Choose Subject --</option>
+    <option value="kannada">Kannada</option>
+    <option value="english">English</option>
+    <option value="hindi">Hindi</option>
+  </select>
+
+  <br>
+  <button onclick="goToPage()">Go</button>
+
+  <script>
+    function goToPage() {
+      const selectedClass = document.getElementById("classDropdown").value;
+      const selectedSubject = document.getElementById("subjectDropdown").value;
+
+      if (selectedClass && selectedSubject) {
+        // Create the page path, e.g., class1_kannada.html
+        const page = `${selectedClass}_${selectedSubject}.html`;
+        window.location.href = page;
+      } else {
+        alert("Please select both class and subject!");
       }
     }
   </script>
