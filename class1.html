@@ -1,7 +1,52 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head><title>Class 1</title></head>
 <body>
   <h1>Welcome to Class 1 Page</h1>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Subject</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    select, button {
+      font-size: 16px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select Your Subject</h1>
+
+  <select id="SubjectDropdown">
+    <option value="">-- Choose a subject --</option>
+    <option value="Kannada.html">Kannada</option>
+    <option value="English.html">English</option>
+    <option value="Hindi.html">Hindi</option>
+  </select>
+
+  <button onclick="goToSubject()">Go</button>
+
+  <script>
+    function goToSubject() {
+      var selected = document.getElementById("SubjectDropdown").value;
+      if (selected) {
+        window.location.href = selected;
+      } else {
+        alert("Please select a subject!");
+      }
+    }
+  </script>
+
 </body>
 </html>
