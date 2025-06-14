@@ -106,13 +106,14 @@
     function goToPage() {
       const selectedClass = document.getElementById("classDropdown").value;
       const selectedSubject = document.getElementById("subjectDropdown").value;
+      const selectedPoem = document.getElementById("poemDropdown").value;
 
-      if (selectedClass && selectedSubject) {
+      if (selectedClass && selectedSubject && selectedPoem) {
         // Create the page path, e.g., class1_kannada.html
-        const page = `${selectedClass}_${selectedSubject}.html`;
+        const page = `${selectedClass}_${selectedSubject}_${selectedPoem}.html`;
         window.location.href = page;
       } else {
-        alert("Please select both class and subject!");
+        alert("Please select class, subject and poem!");
       }
     }
   </script>
