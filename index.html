@@ -102,5 +102,32 @@
     </select>
 
     <select id="poem">
-      <option>-- Choose
-        
+      <option>-- Choose Poem --</option>
+      <option value="poem1">Poem 1</option>
+      <option value="poem2">Poem 2</option>
+    </select>
+
+    <button onclick="goToPoem()">Go</button>
+  </div>
+
+  <footer>
+    © 2025 Students Guide
+  </footer>
+
+  <script>
+    function goToPoem() {
+      const cls = document.getElementById("class").value;
+      const subject = document.getElementById("subject").value;
+      const poem = document.getElementById("poem").value;
+
+      if (cls && subject && poem && cls !== "-- Choose Class --") {
+        const url = `${cls}_${subject}_${poem}.html`;
+        window.location.href = url;
+      } else {
+        alert("Please select all fields.");
+      }
+    }
+  </script>
+
+</body>
+</html>
