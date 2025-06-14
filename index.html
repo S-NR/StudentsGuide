@@ -45,6 +45,39 @@
     allowfullscreen>
 </iframe>
 -->
+
+  <!-- Button to navigate to another page -->
+<section>
+  <h2>Next Page Navigation</h2>
+  <button onclick="location.href='page2.html'">Go to Next Page</button>
+</section>
+
+<!-- Button to play a video in new tab -->
+<section>
+  <h2>Watch on YouTube</h2>
+  <button onclick="window.open('https://www.youtube.com/watch?v=fJC-Rgj7wvc', '_blank')">
+    Watch Video
+  </button>
+</section>
+
+  <!-- Button to show embedded YouTube video -->
+<section>
+  <h2>Embedded Video Playback</h2>
+  <button onclick="document.getElementById('videoFrame').style.display='block'">
+    Play Embedded Video
+  </button>
+  <div id="videoFrame" style="display:none; margin-top:20px;">
+    <!-- Video Section -->
+    <section>
+      <h2>My Introduction Video</h2>
+      <video width="640" height="360" controls>
+        <source src="demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </section>
+  </div>
+</section>
+  
   <footer>
     <p>&copy; 2025 My Website</p>
   </footer>
