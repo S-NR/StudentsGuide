@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -196,6 +196,108 @@
         alert("Please select Class, Subject and Poem.");
       }
     }
+  </script>
+</body>
+</html>
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Poem Display</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    .section {
+      flex: 1;
+      min-width: 300px;
+    }
+    embed, iframe, audio {
+      width: 100%;
+      height: auto;
+    }
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="section" id="pdf-section">
+      <h2>Poem (Text)</h2>
+      <embed id="poem-pdf" src="" type="application/pdf" />
+      <p><a id="poem-pdf-link" href="" target="_blank">Open PDF in New Tab</a></p>
+    </div>
+
+    <div class="section" id="video-section">
+      <h2>Poem (Video)</h2>
+      <iframe id="poem-video" src="" allowfullscreen></iframe>
+    </div>
+
+    <div class="section" id="audio-section">
+      <h2>Poem (Audio)</h2>
+      <audio id="poem-audio" controls>
+        <source id="poem-audio-src" src="" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    // Sample poem data structure
+    const contentMap = {
+      class1: {
+        kannada: {
+          poem1: {
+            pdf: "Class1_Kannada_Poem1.pdf",
+            video: "https://www.youtube.com/embed/VIDEO_ID_1",
+            audio: "Class1_Kannada_Poem1.mp3"
+          },
+          poem2: {
+            pdf: "Class1_Kannada_Poem2.pdf",
+            video: "https://www.youtube.com/embed/VIDEO_ID_2",
+            audio: "Class1_Kannada_Poem2.mp3"
+          }
+        }
+      }
+    };
+
+    function getParam(key) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(key);
+    }
+
+    window.onload = function () {
+      const cls = getParam("class");
+      const subject = getParam("subject");
+      const poem = getParam("poem");
+
+      if (cls && subject && poem && contentMap[cls]?.[subject]?.[poem]) {
+        const data = contentMap[cls][subject][poem];
+
+        document.getElementById("poem-pdf").src = data.pdf;
+        document.getElementById("poem-pdf-link").href = data.pdf;
+        document.getElementById("poem-video").src = data.video;
+        document.getElementById("poem-audio-src").src = data.audio;
+        document.getElementById("poem-audio").load();
+      } else {
+        document.body.innerHTML = "<h2>Invalid or Missing Poem Selection</h2>";
+      }
+    };
   </script>
 </body>
 </html>
