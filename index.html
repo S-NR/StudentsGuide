@@ -8,9 +8,10 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
       background-color: #f2f2f2;
-      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .header {
@@ -24,16 +25,11 @@
 
     .content {
       padding: 20px;
-      max-width: 700px;
-      margin: auto;
+      max-width: 600px;
+      margin: 30px auto;
       background: white;
-      margin-top: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .about {
-      margin-bottom: 30px;
       text-align: center;
     }
 
@@ -48,7 +44,6 @@
       font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
     }
 
     button {
@@ -56,6 +51,7 @@
       color: white;
       border: none;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
@@ -63,71 +59,6 @@
     }
 
     footer {
+      margin-top: auto;
       text-align: center;
       padding: 20px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    @media (min-width: 768px) {
-      select, button {
-        font-size: 1.1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="header">
-    Students Guide
-  </div>
-
-  <div class="content">
-    <div class="about">
-      <h2>About Page</h2>
-      <p>Best Guide for students from Class 1 to 10</p>
-    </div>
-
-    <h3>Select Your Class, Subject & Poem</h3>
-    <select id="class">
-      <option>-- Choose Class --</option>
-      <option value="class1">Class 1</option>
-      <option value="class2">Class 2</option>
-    </select>
-
-    <select id="subject">
-      <option>-- Choose Subject --</option>
-      <option value="english">English</option>
-      <option value="kannada">Kannada</option>
-    </select>
-
-    <select id="poem">
-      <option>-- Choose Poem --</option>
-      <option value="poem1">Poem 1</option>
-      <option value="poem2">Poem 2</option>
-    </select>
-
-    <button onclick="goToPoem()">Go</button>
-  </div>
-
-  <footer>
-    © 2025 Students Guide
-  </footer>
-
-  <script>
-    function goToPoem() {
-      const cls = document.getElementById("class").value;
-      const subject = document.getElementById("subject").value;
-      const poem = document.getElementById("poem").value;
-
-      if (cls && subject && poem && cls !== "-- Choose Class --") {
-        const url = `${cls}_${subject}_${poem}.html`;
-        window.location.href = url;
-      } else {
-        alert("Please select all fields.");
-      }
-    }
-  </script>
-
-</body>
-</html>
