@@ -202,102 +202,132 @@
  -->
 
 
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Poem Display</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Students Guide</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
-    }
-    .container {
+      background-color: #f2f2f2;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #333;
+      color: white;
       padding: 20px;
-      gap: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
     }
-    .section {
-      flex: 1;
-      min-width: 300px;
+
+    .content {
+      padding: 20px;
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    embed, iframe, audio {
+
+    select, button {
       width: 100%;
-      height: auto;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
-    h2 {
-      margin-top: 0;
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="section" id="pdf-section">
-      <h2>Poem (Text)</h2>
-      <embed id="poem-pdf" src="" type="application/pdf" />
-      <p><a id="poem-pdf-link" href="" target="_blank">Open PDF in New Tab</a></p>
-    </div>
+  <div class="header">Students Guide</div>
 
-    <div class="section" id="video-section">
-      <h2>Poem (Video)</h2>
-      <iframe id="poem-video" src="" allowfullscreen></iframe>
-    </div>
+  <div class="content">
+    <h2>Select Class, Subject, and Poem</h2>
 
-    <div class="section" id="audio-section">
-      <h2>Poem (Audio)</h2>
-      <audio id="poem-audio" controls>
-        <source id="poem-audio-src" src="" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
+    <select id="class" onchange="updatePoemOptions()">
+      <option value="">-- Choose Class --</option>
+      <option value="class1">Class 1</option>
+    </select>
+
+    <select id="subject" onchange="updatePoemOptions()">
+      <option value="">-- Choose Subject --</option>
+      <option value="kannada">Kannada</option>
+    </select>
+
+    <select id="poem">
+      <option value="">-- Choose Poem --</option>
+    </select>
+
+    <button onclick="goToPoem()">Go</button>
   </div>
 
+  <footer>© 2025 Students Guide</footer>
+
   <script>
-    // Sample poem data structure
-    const contentMap = {
+    const poemData = {
       class1: {
-        kannada: {
-          poem1: {
-            pdf: "Class1_Kannada_Poem1.pdf",
-            video: "https://www.youtube.com/embed/VIDEO_ID_1",
-            audio: "Class1_Kannada_Poem1.mp3"
-          },
-          poem2: {
-            pdf: "Class1_Kannada_Poem2.pdf",
-            video: "https://www.youtube.com/embed/VIDEO_ID_2",
-            audio: "Class1_Kannada_Poem2.mp3"
-          }
-        }
+        kannada: ["poem1", "poem2"]
       }
     };
 
-    function getParam(key) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(key);
+    function updatePoemOptions() {
+      const cls = document.getElementById("class").value;
+      const subject = document.getElementById("subject").value;
+      const poemSelect = document.getElementById("poem");
+
+      poemSelect.innerHTML = '<option value="">-- Choose Poem --</option>';
+
+      if (cls && subject && poemData[cls] && poemData[cls][subject]) {
+        poemData[cls][subject].forEach((poem, i) => {
+          const option = document.createElement("option");
+          option.value = poem;
+          option.text = `Poem ${i + 1}`;
+          poemSelect.appendChild(option);
+        });
+      }
     }
 
-    window.onload = function () {
-      const cls = getParam("class");
-      const subject = getParam("subject");
-      const poem = getParam("poem");
+    function goToPoem() {
+      const cls = document.getElementById("class").value;
+      const subject = document.getElementById("subject").value;
+      const poem = document.getElementById("poem").value;
 
-      if (cls && subject && poem && contentMap[cls]?.[subject]?.[poem]) {
-        const data = contentMap[cls][subject][poem];
-
-        document.getElementById("poem-pdf").src = data.pdf;
-        document.getElementById("poem-pdf-link").href = data.pdf;
-        document.getElementById("poem-video").src = data.video;
-        document.getElementById("poem-audio-src").src = data.audio;
-        document.getElementById("poem-audio").load();
+      if (cls && subject && poem) {
+        const url = `poem_display.html?class=${cls}&subject=${subject}&poem=${poem}`;
+        window.location.href = url;
       } else {
-        document.body.innerHTML = "<h2>Invalid or Missing Poem Selection</h2>";
+        alert("Please select Class, Subject and Poem.");
       }
-    };
+    }
   </script>
 </body>
 </html>
