@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Select Class & Poem</title>
   <style>
     body {
@@ -64,48 +64,89 @@
   </style>
 </head>
 <body>
-
   <div class="container">
     <h2>Select Your Class, Subject & Poem</h2>
-    <select id="class">
-      <option>-- Choose Class --</option>
+
+    <select id="class" onchange="updatePoemOptions()">
+      <option value="">-- Choose Class --</option>
       <option value="class1">Class 1</option>
       <option value="class2">Class 2</option>
-      <!-- Add more classes as needed -->
+      <option value="class3">Class 3</option>
+      <option value="class4">Class 4</option>
+      <option value="class5">Class 5</option>
+      <option value="class6">Class 6</option>
+      <option value="class7">Class 7</option>
+      <option value="class8">Class 8</option>
+      <option value="class9">Class 9</option>
+      <option value="class10">Class 10</option>
     </select>
 
-    <select id="subject">
-      <option>-- Choose Subject --</option>
-      <option value="english">English</option>
+    <select id="subject" onchange="updatePoemOptions()">
+      <option value="">-- Choose Subject --</option>
       <option value="kannada">Kannada</option>
-      <!-- Add more subjects as needed -->
+      <option value="english">English</option>
+      <option value="hindi">Hindi</option>
     </select>
 
     <select id="poem">
-      <option>-- Choose Poem --</option>
-      <option value="poem1">Poem 1</option>
-      <option value="poem2">Poem 2</option>
-      <!-- Add more poems as needed -->
+      <option value="">-- Choose Poem --</option>
     </select>
 
     <button onclick="goToPoem()">Go</button>
   </div>
 
   <script>
+    // Predefined poem list based on class and subject
+    const poemData = {
+      class1: {
+        kannada: ["poem1", "poem2", "poem3"],
+        english: ["poem1", "poem2"],
+        hindi: ["poem1"]
+      },
+      class2: {
+        kannada: ["poem1", "poem2"],
+        english: ["poem1", "poem2", "poem3", "poem4"],
+        hindi: ["poem1", "poem2"]
+      },
+      class10: {
+        kannada: ["poem1", "poem2", "poem3", "poem4", "poem5"],
+        english: ["poem1", "poem2", "poem3"],
+        hindi: ["poem1"]
+      }
+      // Add more as needed
+    };
+
+    function updatePoemOptions() {
+      const cls = document.getElementById("class").value;
+      const subject = document.getElementById("subject").value;
+      const poemSelect = document.getElementById("poem");
+
+      // Clear previous options
+      poemSelect.innerHTML = '<option value="">-- Choose Poem --</option>';
+
+      if (cls && subject && poemData[cls] && poemData[cls][subject]) {
+        const poems = poemData[cls][subject];
+        poems.forEach((poem, index) => {
+          const option = document.createElement("option");
+          option.value = poem;
+          option.text = `Poem ${index + 1}`;
+          poemSelect.appendChild(option);
+        });
+      }
+    }
+
     function goToPoem() {
       const cls = document.getElementById("class").value;
       const subject = document.getElementById("subject").value;
       const poem = document.getElementById("poem").value;
 
-      if (cls && subject && poem && cls !== "-- Choose Class --") {
-        // Example logic: Navigate to a custom URL (replace with yours)
+      if (cls && subject && poem) {
         const url = `${cls}_${subject}_${poem}.html`;
         window.location.href = url;
       } else {
-        alert("Please select all fields.");
+        alert("Please select Class, Subject and Poem.");
       }
     }
   </script>
-
 </body>
 </html>
