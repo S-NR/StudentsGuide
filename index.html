@@ -132,7 +132,8 @@
           const option = document.createElement("option");
           option.value = poem;
          // option.text = `Poem ${i + 1}`;
-          option.text = poemInfo[cls][subject];
+         // option.text = poemInfo[cls][subject];
+          option.text = `Poem ${i + 1} - ${poemInfo[cls][subject][i]}`;
           poemSelect.appendChild(option);
         });
       }
