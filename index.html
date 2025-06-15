@@ -105,7 +105,21 @@
         kannada_SL: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"]
       }
     };
-
+    
+    const poemInfo = {
+      class1: {
+        kannada: ["poem1", "poem2", "poem3", "poem4", "poem5"]
+      },
+      class5: {
+        kannada: ["ಗಿಡಮರ", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
+        kannada_SL: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"]
+      },
+      class6: {
+        kannada: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
+        kannada_SL: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"]
+      }
+    };
+    
     function updatePoemOptions() {
       const cls = document.getElementById("class").value;
       const subject = document.getElementById("subject").value;
@@ -117,7 +131,8 @@
         poemData[cls][subject].forEach((poem, i) => {
           const option = document.createElement("option");
           option.value = poem;
-          option.text = `Poem ${i + 1}`;
+         // option.text = `Poem ${i + 1}`;
+          option.text = poemInfo[cls][subject];
           poemSelect.appendChild(option);
         });
       }
