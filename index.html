@@ -203,9 +203,13 @@
       const content = document.getElementById("contentItem").value;
 
       if (cls && subject && lessontype && content) {
-        // const url = `content_display.html?class=${cls}&subject=${subject}&type=${lessontype}&item=${encodeURIComponent(content)}`;
-        const url = `poem_display.html?class=${cls}&subject=${subject}&poem=${poem}`;
-        window.location.href = url;
+        if (lessontype === "Poem") {
+          const url = `poem_display.html?class=${cls}&subject=${subject}&poem=${encodeURIComponent(content)}`;
+          window.location.href = url;
+        } else {
+          const url = `content_display.html?class=${cls}&subject=${subject}&type=${lessontype}&item=${encodeURIComponent(content)}`;
+          window.location.href = url;
+        }
       } else {
         alert("Please select Class, Subject, Lesson Type, and Content.");
       }
