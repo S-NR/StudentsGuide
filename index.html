@@ -81,6 +81,7 @@
       <option value="">-- Choose Subject --</option>
       <option value="kannada">Kannada First Language</option>
       <option value="kannada_SL">Kannada Second Language</option>
+      <option value="English_SL">English Second Language</option>
     </select>
 
     <select id="lessontype" onchange="updateContentOptions()">
@@ -209,6 +210,9 @@
         },
         kannada_SL: {
           Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6"],
+        },
+        English_SL: {
+          Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6"],
         }
       },
       class6: {
@@ -216,6 +220,9 @@
           Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
         },
         kannada_SL: {
+          Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7"],
+        },
+        English_SL: {
           Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
         }
       },
@@ -224,7 +231,7 @@
           Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
         },
         kannada_SL: {
-          Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
+          Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7"],
         }
       },
       class8: {
@@ -255,20 +262,23 @@
     const poemTitles = {
       class1: {
         // kannada: ["ವಂದನೆ", "ಊಟದ ಆಟ - TBD", "ಬೇಸಿಗೆ ರಜೆಯಲಿ - TBD", "ಚಂದಿರನೇತಕೆ ಓಡುವನಮ್ ಮ - TBD", "ಮೊಲದ ಮರಿ - TBD"],
-        kannada: ["ವಂದನೆ"],
+        kannada: ["ವಂದನೆ, ootada aata, Besige rajeyali"],
         // kannada_SL: ["ಕನ್ನಡ ನುಡಿ"]
       },
       class5: {
         kannada: ["ಗಿಡಮರ", "ಸ್ವಾತಂತ್ರ್ಯದ ಹಣತೆ", "vachanagalu - TBD", "ಕನ್ನಡ ಕನ್ನಡ ಬರ್ರಿ ನಮ್ಮ ಸಂಗಡ", "ಕರಡಿ ಕುಣಿತ", "ಮಗುವಿನ ಮೊರೆ", "ಮೂಡಲ ಮನೆ", "ಭುವನೇಶ್ವರಿ"],
-        kannada_SL: ["ಕನ್ನಡ ನುಡಿ", "Santhammanna - TBD", "ಸಾರುತಿದೆ ಸೃಷ್ಟಿ", "ಅಮ್ಮ", "ಉದಯ ರಾಗ", "ಜನಪದ", "TBD"]
+        kannada_SL: ["ಕನ್ನಡ ನುಡಿ", "Santhammanna - TBD", "ಸಾರುತಿದೆ ಸೃಷ್ಟಿ", "ಅಮ್ಮ", "ಉದಯ ರಾಗ", "ಜನಪದ"],
+        English_SL: ["The Elephant", "Friends", "Tamarind", "Believe - TBD", "The Cow", "Results and Roses", "Paper Boats - TBD", "My Land" ]
       },
       class6: {
         kannada: ["ಬೇಸಿಗೆ", "ಮಂಗಳ ಗ್ರಹದಲ್ಲಿ ಪುಟ್ಟಿ", "ನೀ ಹೋದ ಮರುದಿನ", "ಮಗು ಮತ್ತು ಹಣ್ಣುಗಳು", "ನೀ ನನಗಿದ್ದರೆ - TBD", "ಗಂಗವ್ವ ತಾಯಿ", "ಹೃದಯ ವಚನಗಳು", "ಕಿತ್ತೂರ ಕೇಸರಿ"],
-        kannada_SL: ["ಈ ಮಣ್ಣು ನಮ್ಮದು", "ನನ್ನ ದೇಶ ನನ್ನ ಜನ", "ನಮ್ಮೂರ ಕೆರೆ", "ಕನ್ನಡಮ್ಮ", "ಐಕ್ಯಗಾನ", "ಸುಂಟರಗಾಳಿ", "ಚುಟುಕುಗಳು"]
+        kannada_SL: ["ಈ ಮಣ್ಣು ನಮ್ಮದು", "ನನ್ನ ದೇಶ ನನ್ನ ಜನ", "ನಮ್ಮೂರ ಕೆರೆ", "ಕನ್ನಡಮ್ಮ", "ಐಕ್ಯಗಾನ", "ಸುಂಟರಗಾಳಿ", "ಚುಟುಕುಗಳು"],
+		    English_SL: ["The Rainbow", "Sympathy - TBD", "Kindness to Animals", "All things Bright and Beautiful", "The Fly", "The Way to Succeed", "My People - TBD", "A sonnet for my incomparable Mother - TBD" ]      
       },
       class7: {
         kannada: ["ಹುತ್ತರಿ ಹಾಡು", "ಸ್ವಾತಂತ್ರ್ಯ ಸ್ವರ್ಗ", "ಭಾಗ್ಯಾದ ಬಳೆಗಾರ", "ವಚನಗಳ ಭಾವಸಂಗಾಮ", "ಹಚ್ಚೇವು ಕನ್ನಡದ ದೀಪ", "ಬಿಡುಗಡೆಯ ಹಾಡು", "ತಿರುಕನ ಕನಸು", "ಅಭಿಮನ್ಯು ಪರಾಕ್ರಮ"],
-        kannada_SL: ["ನಿತ್ಯೋತ್ಸವ", "ಭಾರತ ಭೂಮಿ ನನ್ನ ತಾಯಿ", "ಅನ್ನದಾತ", "ಶ್ರಾವಣ ಬಂತು ಕಾಡಿಗೆ", "ಈ ನೆಲ ಈ ಜಲ", "ಜಾನ ಆಮೆ", "ಸರ್ವಜ್ಞನ ವಚನಗಳು"]
+        kannada_SL: ["ನಿತ್ಯೋತ್ಸವ", "ಭಾರತ ಭೂಮಿ ನನ್ನ ತಾಯಿ", "ಅನ್ನದಾತ", "ಶ್ರಾವಣ ಬಂತು ಕಾಡಿಗೆ", "ಈ ನೆಲ ಈ ಜಲ", "ಜಾನ ಆಮೆ", "ಸರ್ವಜ್ಞನ ವಚನಗಳು"],
+        English_SL: ["The Gymnastic clock", "Awareness", "Why God made Teachers - TBD", "Froth and Bubble - TBD", "Abou Ben Adhem leigh hunt", "Mountain climbing Laura howell Horner", "Dear Grandma and Grandpa", "The Quarrel" ]   
       },
       class8: {
         kannada: ["ಬೇಸಿಗೆ", "ಮಂಗಳ ಗ್ರಹದಲ್ಲಿ ಪುಟ್ಟಿ", "ನೀ ಹೋದ ಮರುದಿನ", "ಮಗು ಮತ್ತು ಹಣ್ಣುಗಳು", "ನೀ ನನಗಿದ್ದರೆ", "ಗಂಗವ್ವ ತಾಯಿ", "ಹೃದಯ ವಚನಗಳು", "ಕಿತ್ತೂರ ಕೇಸರಿ"]
