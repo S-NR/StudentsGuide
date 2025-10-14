@@ -472,17 +472,29 @@
       const data = contentMap?.[cls]?.[subject]?.[poem];
 
       if (data) {
-        document.getElementById("poem-pdf").src = data.pdf;
-        document.getElementById("poem-pdf-link").href = data.pdf;
+        // const pdfIfram = document.getElementById("poem-pdf").src = data.pdf;
+        // document.getElementById("poem-pdf-link").href = data.pdf;
+        // document.getElementById("poem-video").src = data.video;
+        // document.getElementById("poem-audio-src").src = data.audio;
+        // document.getElementById("poem-audio").load();
 
+        const pdfIframe = document.getElementById("poem-pdf"); // Grab the iframe element
+        const pdfLink = document.getElementById("poem-pdf-link");
+        const videoIframe = document.getElementById("poem-video");
+        const audioElem = document.getElementById("poem-audio");
+        const audioSrc = document.getElementById("poem-audio-src");
+
+        pdfIframe.src = data.pdf;
+        pdfLink.href = data.pdf;
+        videoIframe.src = data.video;
+        audioSrc.src = data.audio;
+        audioElem.load();
+        
         // Force reload by re-assigning after a tiny delay
         setTimeout(() => {
             pdfIframe.src = data.pdf;
         }, 50);
-        
-        document.getElementById("poem-video").src = data.video;
-        document.getElementById("poem-audio-src").src = data.audio;
-        document.getElementById("poem-audio").load();
+
       } else {
         document.body.innerHTML = "<h2>Invalid or Missing Poem Selection</h2>";
       }
