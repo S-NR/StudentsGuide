@@ -474,6 +474,12 @@
       if (data) {
         document.getElementById("poem-pdf").src = data.pdf;
         document.getElementById("poem-pdf-link").href = data.pdf;
+
+        // Force reload by re-assigning after a tiny delay
+        setTimeout(() => {
+            pdfIframe.src = data.pdf;
+        }, 50);
+        
         document.getElementById("poem-video").src = data.video;
         document.getElementById("poem-audio-src").src = data.audio;
         document.getElementById("poem-audio").load();
