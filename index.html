@@ -33,16 +33,49 @@
       text-align: center;
     }
 
-    select, button {
+    /* select, button {
       width: 100%;
       padding: 12px;
       margin: 10px 0;
       font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #ccc;
-      background-color: #e6f2ff; /* Light blue background */
-      color: #000;               /* Black text */
+       background-color: #e6f2ff; 
+      color: #000;              
+    } */
+
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #99c2ff;
+      background-color: #e6f2ff; /* Light blue box */
+      color: #000;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position-x: calc(100% - 10px);
+      background-position-y: center;
     }
+
+    select:hover,
+    select:focus {
+      background-color: #d0e7ff; /* Slightly darker when hovered or clicked */
+      border-color: #007bff;
+      outline: none;
+    }
+
+    /* This controls the color of dropdown list items (when open) */
+    select option {
+      background-color: #d0e7ff; /* Slightly darker blue for dropdown */
+      color: #000;
+  }
+
 
     button {
       background-color: #007bff;
