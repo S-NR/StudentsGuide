@@ -488,12 +488,12 @@
         pdfLink.href = data.pdf;
         videoIframe.src = data.video;
         audioSrc.src = data.audio;
-        audioElem.load();
+        // audioElem.load();
         
         // Force reload by re-assigning after a tiny delay
         setTimeout(() => {
             pdfIframe.src = data.pdf;
-        }, 50);
+        }, 200); // 200ms delay
 
       } else {
         document.body.innerHTML = "<h2>Invalid or Missing Poem Selection</h2>";
