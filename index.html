@@ -111,13 +111,14 @@
       <option value="kannada">Kannada First Language</option>
       <option value="kannada_SL">Kannada Second Language</option>
       <option value="English_SL">English Second Language</option>
+      <option value="Hindi_TL">Hindi Third Language</option>
     </select>
 
     <select id="lessontype" onchange="updateContentOptions()">
       <option value="">-- Choose Lesson Type --</option>
     </select>
 
-    <select id="contentItem">
+    <select id="contentItem"> 
       <option value="">-- Choose Content --</option>
     </select>
 
@@ -223,6 +224,51 @@
       }
     };
 -->
+<script>
+  // 🔹 Step 1: Define class-specific subject mapping
+  const allSubjects = {
+    class1: [
+      { value: "kannada", text: "Kannada First Language" }
+    ],
+    class5: [
+      { value: "kannada", text: "Kannada First Language" }
+    ],
+    class6: [
+      { value: "kannada", text: "Kannada First Language" },
+      { value: "Hindi_TL", text: "Hindi Third Language" }
+    ],
+    class7: [
+      { value: "kannada", text: "Kannada First Language" },
+      { value: "English_SL", text: "English Second Language" }
+    ]
+  };
+
+  // 🔹 Step 2: Attach event listener to Class dropdown
+  const classSelect = document.getElementById("class");
+  const subjectSelect = document.getElementById("subject");
+
+  classSelect.addEventListener("change", () => {
+    const selectedClass = classSelect.value;
+    const subjects = allSubjects[selectedClass] || [];
+
+    // Reset subjects dropdown
+    subjectSelect.innerHTML = '<option value="">-- Choose Subject --</option>';
+
+    // Populate subjects for this class
+    subjects.forEach(sub => {
+      const opt = document.createElement("option");
+      opt.value = sub.value;
+      opt.textContent = sub.text;
+      subjectSelect.appendChild(opt);
+    });
+
+    // Also reset lesson and content selections
+    document.getElementById("lessontype").innerHTML = '<option value="">-- Choose Lesson Type --</option>';
+    document.getElementById("contentItem").innerHTML = '<option value="">-- Choose Content --</option>';
+  });
+</script>
+	
+
 <script>
     const contentData = {
       class1: {
