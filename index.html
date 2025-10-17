@@ -437,7 +437,7 @@
       const content = document.getElementById("contentItem").value;
 
       if (cls && subject && lessontype && content) {
-        if (lessontype === "Poem") {
+        if (lessontype === "Poem" || lessontype === "shishugeeth") {
           const url = `poem_display.html?class=${cls}&subject=${subject}&poem=${encodeURIComponent(content)}`;
           window.location.href = url;
         } else {
