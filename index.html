@@ -101,6 +101,7 @@
     <select id="class" onchange="updateLessonTypeOptions()">
       <option value="">-- Choose Class --</option>
       <option value="class1">Class 1</option>
+      <option value="class4">Class 4</option>
       <option value="class5">Class 5</option>
       <option value="class6">Class 6</option>
       <option value="class7">Class 7</option>
@@ -230,6 +231,11 @@
     class1: [
       { value: "Kannada", text: "Kannada First Language" }
     ],
+    class4: [
+      { value: "Kannada", text: "Kannada First Language" },
+      { value: "Kannada_SL", text: "Kannada Second Language" },
+      { value: "English_SL", text: "English Second Language" }
+    ],
     class5: [
       { value: "Kannada", text: "Kannada First Language" },
       { value: "Kannada_SL", text: "Kannada Second Language" },
@@ -287,6 +293,18 @@
           Poem: ["Not Available"]
         }
       },
+      class4: {
+        Kannada: {
+          Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6"],
+        },
+        Kannada_SL: {
+          Poem: ["poorva_siddatha1", "poem1"],
+        },
+        English_SL: {
+          Poem: ["poem1", "poem2", "poem3", "poem4"],
+          Rhyme: ["rhyme1", "rhyme2", "rhyme3"],
+        }
+      },
       class5: {
         Kannada: {
           Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6", "poem7", "poem8"],
@@ -322,6 +340,10 @@
         },
         English_SL: {
           Poem: ["poem1", "poem2"],
+        },
+        Hindi_TL: {
+          Poem: ["poem1", "poem2", "poem3", "poem4", "poem5", "poem6"],
+          lesson: ["lesson6"],
         }
       },
       class8: {
@@ -437,7 +459,7 @@
       const content = document.getElementById("contentItem").value;
 
       if (cls && subject && lessontype && content) {
-        if (lessontype === "Poem" || lessontype === "ShishuGeeth") {
+        if (lessontype === "Poem" || lessontype === "ShishuGeeth" || lessontype === "rhyme") {
           const url = `poem_display.html?class=${cls}&subject=${subject}&poem=${encodeURIComponent(content)}`;
           window.location.href = url;
         } else {
