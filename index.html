@@ -232,7 +232,7 @@
         },
         Hindi_TL: {
           Poem: ["poem1", "poem2", "poem3"],
-          // ShishuGeeth: ["shishugeeth1", "shishugeeth2", "shishugeeth3", "shishugeeth4"],
+          ShishuGeeth: ["shishugeeth1", "shishugeeth2", "shishugeeth3", "shishugeeth4"],
         }
       },
       class7: {
@@ -370,10 +370,15 @@
       const content = document.getElementById("contentItem").value;
 
       if (cls && subject && lessontype && content) {
-        if (lessontype === "Poem" || lessontype === "ShishuGeeth" || lessontype === "Rhyme") {
+        if (lessontype === "Poem" || lessontype === "Rhyme") {
           const url = `poem_display.html?class=${cls}&subject=${subject}&poem=${encodeURIComponent(content)}`;
           window.location.href = url;
-        } else {
+        }
+        else if (lessontype === "ShishuGeeth") {
+          const url = `shishugeeth_display.html?class=${cls}&subject=${subject}&poem=${encodeURIComponent(content)}`;
+          window.location.href = url;
+        }
+        else {
           const url = `content_display.html?class=${cls}&subject=${subject}&type=${lessontype}&item=${encodeURIComponent(content)}`;
           window.location.href = url;
         }

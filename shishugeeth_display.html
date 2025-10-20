@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shishugeeth Display</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .left-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .right-column {
+    flex: 2;
+    min-width: 300px;
+  }
+
+  .section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  embed, iframe, audio {
+    width: 100%;
+    border: none;
+  }
+
+  #poem-pdf {
+    height: 500px;
+  }
+
+  iframe {
+    height: 250px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .left-column, .right-column {
+      max-width: 100%;
+    }
+
+    #poem-pdf {
+      height: 60vh;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+  <!-- Column 1: Left -->
+  <div class="left-column section">
+    <h2>Poem (Video)</h2>
+    <iframe id="poem-video" src="" allowfullscreen></iframe>
+
+    <!-- <h2>Poem (Audio)</h2>
+    <audio id="poem-audio" controls>
+      <source id="poem-audio-src" src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio> -->
+  </div>
+
+  <!-- Column 2: Right -->
+  <!-- <div class="right-column section">
+    <h2>Poem (Text)</h2>
+    <iframe id="poem-pdf" src="" style="width:100%;height:500px;" frameborder="0"></iframe>
+    <p><a id="poem-pdf-link" href="" target="_blank">Open PDF in New Tab</a></p>
+  </div> -->
+</div>
+
+  <script>
+    const contentMap = {
+      class6: {       
+        Hindi_TL: {
+          shishugeeth1: {  // TBD
+            video: "https://www.youtube.com/embed/vDosNUKlueY"
+          }, 
+          shishugeeth2: {  // TBD
+            video: "https://www.youtube.com/embed/Gp9ZmhllDjI"
+          }, 
+          shishugeeth3: {  // TBD
+            video: "https://www.youtube.com/embed/AfO-m3xprYE"
+          }, 
+          shishugeeth4: {  // TBD
+            video: "https://www.youtube.com/embed/cSPx1RTXdyg"
+          }
+        },
+      },   
+    };
+
+  function loadPoem() {
+    const params = new URLSearchParams(window.location.search);
+    const cls = params.get("class");
+    const subject = params.get("subject");
+    const poem = params.get("poem");
+
+    if (!cls || !subject || !poem) return;
+
+    const poemData = contentMap?.[cls]?.[subject]?.[poem];
+    if (!poemData) {
+      document.getElementById("poem-video").src = "";
+      return;
+    }
+
+    const timestamp = new Date().getTime(); // unique cache-buster
+
+    // ✅ Force-refresh the video iframe
+    document.getElementById("poem-video").src = poemData.video + "?t=" + timestamp;
+  }
+
+  // Run when page loads
+  window.addEventListener("DOMContentLoaded", loadPoem);
+</script>
+</body>
+</html>
+
+
