@@ -516,47 +516,77 @@
       },      
     };
 
-    function getParam(key) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(key);
+  //   function getParam(key) {
+  //     const urlParams = new URLSearchParams(window.location.search);
+  //     return urlParams.get(key);
+  //   }
+
+  //   window.onload = function () {
+  //     const cls = getParam("class");
+  //     const subject = getParam("subject");
+  //     const poem = getParam("poem");
+
+  //     const data = contentMap?.[cls]?.[subject]?.[poem];
+
+  //     if (data) {
+  //       // const pdfIfram = document.getElementById("poem-pdf").src = data.pdf;
+  //       // document.getElementById("poem-pdf-link").href = data.pdf;
+  //       // document.getElementById("poem-video").src = data.video;
+  //       // document.getElementById("poem-audio-src").src = data.audio;
+  //       // document.getElementById("poem-audio").load();
+
+  //       const pdfIframe = document.getElementById("poem-pdf"); // Grab the iframe element
+  //       const pdfLink = document.getElementById("poem-pdf-link");
+  //       const videoIframe = document.getElementById("poem-video");
+  //       const audioElem = document.getElementById("poem-audio");
+  //       const audioSrc = document.getElementById("poem-audio-src");
+
+  //       pdfIframe.src = data.pdf;
+  //       pdfLink.href = data.pdf;
+  //       videoIframe.src = data.video;
+  //       audioSrc.src = data.audio;
+  //       // audioElem.load();
+        
+  //       // Force reload by re-assigning after a tiny delay
+  //       setTimeout(() => {
+  //           pdfIframe.src = data.pdf;
+  //       }, 500); // 500ms delay
+
+  //     } else {
+  //       document.body.innerHTML = "<h2>Invalid or Missing Poem Selection</h2>";
+  //     }
+  //   };
+
+  function loadPoem() {
+    const params = new URLSearchParams(window.location.search);
+    const cls = params.get("class");
+    const subject = params.get("subject");
+    const poem = params.get("poem");
+
+    if (!cls || !subject || !poem) return;
+
+    const poemData = contentMap?.[cls]?.[subject]?.[poem];
+    if (!poemData) {
+      document.getElementById("poem-video").src = "";
+      document.getElementById("poem-pdf").src = "";
+      return;
     }
 
-    window.onload = function () {
-      const cls = getParam("class");
-      const subject = getParam("subject");
-      const poem = getParam("poem");
+    const timestamp = new Date().getTime(); // unique cache-buster
 
-      const data = contentMap?.[cls]?.[subject]?.[poem];
+    // ✅ Force-refresh the video iframe
+    document.getElementById("poem-video").src = poemData.video + "?t=" + timestamp;
 
-      if (data) {
-        // const pdfIfram = document.getElementById("poem-pdf").src = data.pdf;
-        // document.getElementById("poem-pdf-link").href = data.pdf;
-        // document.getElementById("poem-video").src = data.video;
-        // document.getElementById("poem-audio-src").src = data.audio;
-        // document.getElementById("poem-audio").load();
+    // ✅ Force-refresh the PDF iframe
+    document.getElementById("poem-pdf").src = poemData.pdf + "&t=" + timestamp;
 
-        const pdfIframe = document.getElementById("poem-pdf"); // Grab the iframe element
-        const pdfLink = document.getElementById("poem-pdf-link");
-        const videoIframe = document.getElementById("poem-video");
-        const audioElem = document.getElementById("poem-audio");
-        const audioSrc = document.getElementById("poem-audio-src");
+    // ✅ Update link for “Open PDF in New Tab”
+    document.getElementById("poem-pdf-link").href = poemData.pdf;
+  }
 
-        pdfIframe.src = data.pdf;
-        pdfLink.href = data.pdf;
-        videoIframe.src = data.video;
-        audioSrc.src = data.audio;
-        // audioElem.load();
-        
-        // Force reload by re-assigning after a tiny delay
-        setTimeout(() => {
-            pdfIframe.src = data.pdf;
-        }, 500); // 500ms delay
-
-      } else {
-        document.body.innerHTML = "<h2>Invalid or Missing Poem Selection</h2>";
-      }
-    };
-  </script>
+  // Run when page loads
+  window.addEventListener("DOMContentLoaded", loadPoem);
+</script>
 </body>
 </html>
 
